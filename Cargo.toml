@@ -4,7 +4,7 @@ version = "0.1.0"
 edition = "2021"
 
 [build-dependencies]
-tf-bindgen = { git = "https://github.com/robert-oleynik/tf-bindgen" }
+tf-bindgen = { git = "https://github.com/robert-oleynik/tf-bindgen", version = "0.1.0" }
 
 [dependencies]
 tf-bindgen = { git = "https://github.com/robert-oleynik/tf-bindgen" }
