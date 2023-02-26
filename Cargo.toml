@@ -1,0 +1,10 @@
+[package]
+name = "tf-kubernetes"
+version = "0.1.0"
+edition = "2021"
+
+[build-dependencies]
+tf-bindgen = { git = "https://github.com/robert-oleynik/tf-bindgen" }
+
+[dependencies]
+tf-bindgen = { git = "https://github.com/robert-oleynik/tf-bindgen" }
