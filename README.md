@@ -1,8 +1,8 @@
-# [Name]
+# Terraform Kubernetes Provider for Rust
 
 <!-- Badges? -->
 
-<!-- put description here -->
+This repository contains the pre generated rust code for the Terraform Kubernetes provider.
 
 ## Requirements
 
