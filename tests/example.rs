@@ -8,15 +8,15 @@ fn nginx() {
 
     let meta = KubernetesPodMetadata::builder().name("nginx").build();
     let port = KubernetesPodSpecContainerPort::builder()
-        .container_port(80_usize)
+        .container_port(80)
         .build();
     let container = KubernetesPodSpecContainer::builder()
         .name("nginx")
         .image("nginx")
-        .port(vec![Some(port)])
+        .port(vec![port])
         .build();
     let spec = KubernetesPodSpec::builder()
-        .container(vec![Some(container)])
+        .container(vec![container])
         .build();
 
     KubernetesPod::create(&stack, "nginx")

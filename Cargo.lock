@@ -132,7 +132,6 @@ dependencies = [
 [[package]]
 name = "tf-bindgen"
 version = "0.1.0"
-source = "git+https://github.com/robert-oleynik/tf-bindgen#3ae8087d9f3fac3c9c0c3f488373b94e2ee89c50"
 dependencies = [
  "anyhow",
  "heck",
@@ -147,7 +146,6 @@ dependencies = [
 [[package]]
 name = "tf-bindgen-codegen"
 version = "0.1.0"
-source = "git+https://github.com/robert-oleynik/tf-bindgen#3ae8087d9f3fac3c9c0c3f488373b94e2ee89c50"
 dependencies = [
  "heck",
  "quote",
@@ -164,7 +162,6 @@ dependencies = [
 [[package]]
 name = "tf-schema"
 version = "0.1.0"
-source = "git+https://github.com/robert-oleynik/tf-bindgen#3ae8087d9f3fac3c9c0c3f488373b94e2ee89c50"
 dependencies = [
  "serde",
  "serde_json",
