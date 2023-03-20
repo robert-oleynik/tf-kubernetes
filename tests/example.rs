@@ -1,21 +1,21 @@
 use tf_bindgen::{app::App, stack::Stack};
-use tf_kubernetes::kubernetes::resource::kubernetes_pod::*;
+use tf_kubernetes::kubernetes::resource::kubernetes_pod::{self, *};
 
 #[test]
 fn nginx() {
     let app = App::default();
     let stack = Stack::new(&app, "nginx");
 
-    let meta = KubernetesPodMetadata::builder().name("nginx").build();
-    let port = KubernetesPodSpecContainerPort::builder()
+    let meta = kubernetes_pod::Metadata::builder().name("nginx").build();
+    let port = kubernetes_pod::SpecContainerPort::builder()
         .container_port(80)
         .build();
-    let container = KubernetesPodSpecContainer::builder()
+    let container = kubernetes_pod::SpecContainer::builder()
         .name("nginx")
         .image("nginx")
         .port(vec![port])
         .build();
-    let spec = KubernetesPodSpec::builder()
+    let spec = kubernetes_pod::Spec::builder()
         .container(vec![container])
         .build();
 
