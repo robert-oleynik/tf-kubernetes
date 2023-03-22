@@ -1,5 +1,5 @@
 use tf_bindgen::{app::App, stack::Stack};
-use tf_kubernetes::kubernetes::resource::kubernetes_namespace::{self, *};
+use tf_kubernetes::kubernetes::resource::kubernetes_namespace::*;
 use tf_kubernetes::kubernetes::Kubernetes;
 
 #[test]
@@ -10,7 +10,7 @@ fn default_provider() {
     Kubernetes::create(&stack).build();
 
     KubernetesNamespace::create(&stack, "default")
-        .metadata(kubernetes_namespace::Metadata::builder().build())
+        .metadata(KubernetesNamespaceMetadata::builder().build())
         .build();
 
     app.validate(true).unwrap();
@@ -26,7 +26,7 @@ fn config_path_provider() {
         .build();
 
     KubernetesNamespace::create(&stack, "default")
-        .metadata(Metadata::builder().build())
+        .metadata(KubernetesNamespaceMetadata::builder().build())
         .build();
 
     app.validate(true).unwrap();
