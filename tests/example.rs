@@ -29,13 +29,13 @@ fn nginx() {
         .spec(spec)
         .build();
 
-    app.validate(false).unwrap()
+    app.validate(true).unwrap()
 }
 
 #[test]
 fn nginx_link() {
     let app = App::default();
-    let stack = Stack::new(&app, "nginx");
+    let stack = Stack::new(&app, "nginx-link");
 
     Kubernetes::create(&stack).build();
 
@@ -64,6 +64,35 @@ fn nginx_link() {
         .metadata(meta)
         .spec(spec)
         .build();
+
+    app.validate(true).unwrap()
+}
+
+#[test]
+fn nginx_macro() {
+    let app = App::default();
+    let stack = Stack::new(&app, "nginx-macro");
+
+    Kubernetes::create(&stack).build();
+
+    tf_bindgen::codegen::resource! {
+        &stack,
+        resource "kubernetes_pod" "nginx" {
+            metadata {
+                name = "nginx"
+            }
+            spec {
+                container {
+                    name = "nginx"
+                    image = "nginx"
+
+                    port {
+                        container_port = 80
+                    }
+                }
+            }
+        }
+    };
 
     app.validate(true).unwrap()
 }
