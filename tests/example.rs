@@ -45,7 +45,7 @@ fn nginx_link() {
         .build();
 
     let meta = KubernetesPodMetadata::builder()
-        .namespace(&ns.metadata.name)
+        .namespace(&ns.metadata[0].name)
         .name("nginx")
         .build();
     let port = KubernetesPodSpecContainerPort::builder()
