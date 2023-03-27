@@ -29,7 +29,7 @@ fn nginx() {
         .spec(spec)
         .build();
 
-    app.validate(true).unwrap()
+    app.validate().unwrap()
 }
 
 #[test]
@@ -65,7 +65,7 @@ fn nginx_link() {
         .spec(spec)
         .build();
 
-    app.validate(true).unwrap()
+    app.validate().unwrap()
 }
 
 #[test]
@@ -94,5 +94,5 @@ fn nginx_macro() {
         }
     };
 
-    app.validate(true).unwrap()
+    app.validate().unwrap()
 }
