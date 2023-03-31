@@ -1,11 +1,11 @@
-use tf_bindgen::{app::App, stack::Stack};
-use tf_kubernetes::kubernetes::resource::kubernetes_namespace::*;
-use tf_kubernetes::kubernetes::Kubernetes;
+use tf_bindgen::cli::Terraform;
+use tf_bindgen::Stack;
+use tf_kubernetes::resource::kubernetes_namespace::*;
+use tf_kubernetes::Kubernetes;
 
 #[test]
 fn default_provider() {
-    let app = App::new();
-    let stack = Stack::new(&app, "default_provider");
+    let stack = Stack::new("default_provider");
 
     Kubernetes::create(&stack).build();
 
@@ -13,13 +13,29 @@ fn default_provider() {
         .metadata(KubernetesNamespaceMetadata::builder().build())
         .build();
 
-    app.validate(true).unwrap();
+    if !Terraform::init(&stack)
+        .unwrap()
+        .output()
+        .unwrap()
+        .status
+        .success()
+    {
+        panic!()
+    }
+    if !Terraform::validate(&stack)
+        .unwrap()
+        .output()
+        .unwrap()
+        .status
+        .success()
+    {
+        panic!()
+    }
 }
 
 #[test]
 fn config_path_provider() {
-    let app = App::new();
-    let stack = Stack::new(&app, "config_path_provider");
+    let stack = Stack::new("config_path_provider");
 
     Kubernetes::create(&stack)
         .config_path("~/.kube/config")
@@ -29,5 +45,22 @@ fn config_path_provider() {
         .metadata(KubernetesNamespaceMetadata::builder().build())
         .build();
 
-    app.validate(true).unwrap();
+    if !Terraform::init(&stack)
+        .unwrap()
+        .output()
+        .unwrap()
+        .status
+        .success()
+    {
+        panic!()
+    }
+    if !Terraform::validate(&stack)
+        .unwrap()
+        .output()
+        .unwrap()
+        .status
+        .success()
+    {
+        panic!()
+    }
 }

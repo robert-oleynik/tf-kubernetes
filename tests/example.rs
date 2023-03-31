@@ -1,13 +1,12 @@
-use tf_bindgen::app::App;
-use tf_bindgen::stack::Stack;
-use tf_kubernetes::kubernetes::resource::kubernetes_namespace::*;
-use tf_kubernetes::kubernetes::resource::kubernetes_pod::*;
-use tf_kubernetes::kubernetes::Kubernetes;
+use tf_bindgen::cli::Terraform;
+use tf_bindgen::Stack;
+use tf_kubernetes::resource::kubernetes_namespace::*;
+use tf_kubernetes::resource::kubernetes_pod::*;
+use tf_kubernetes::Kubernetes;
 
 #[test]
 fn nginx() {
-    let app = App::default();
-    let stack = Stack::new(&app, "nginx");
+    let stack = Stack::new("nginx");
 
     Kubernetes::create(&stack).build();
 
@@ -29,13 +28,29 @@ fn nginx() {
         .spec(spec)
         .build();
 
-    app.validate().unwrap()
+    if !Terraform::init(&stack)
+        .unwrap()
+        .output()
+        .unwrap()
+        .status
+        .success()
+    {
+        panic!()
+    }
+    if !Terraform::validate(&stack)
+        .unwrap()
+        .output()
+        .unwrap()
+        .status
+        .success()
+    {
+        panic!()
+    }
 }
 
 #[test]
 fn nginx_link() {
-    let app = App::default();
-    let stack = Stack::new(&app, "nginx-link");
+    let stack = Stack::new("nginx-link");
 
     Kubernetes::create(&stack).build();
 
@@ -65,13 +80,29 @@ fn nginx_link() {
         .spec(spec)
         .build();
 
-    app.validate().unwrap()
+    if !Terraform::init(&stack)
+        .unwrap()
+        .output()
+        .unwrap()
+        .status
+        .success()
+    {
+        panic!()
+    }
+    if !Terraform::validate(&stack)
+        .unwrap()
+        .output()
+        .unwrap()
+        .status
+        .success()
+    {
+        panic!()
+    }
 }
 
 #[test]
 fn nginx_macro() {
-    let app = App::default();
-    let stack = Stack::new(&app, "nginx-macro");
+    let stack = Stack::new("nginx-macro");
 
     Kubernetes::create(&stack).build();
 
@@ -94,5 +125,22 @@ fn nginx_macro() {
         }
     };
 
-    app.validate().unwrap()
+    if !Terraform::init(&stack)
+        .unwrap()
+        .output()
+        .unwrap()
+        .status
+        .success()
+    {
+        panic!()
+    }
+    if !Terraform::validate(&stack)
+        .unwrap()
+        .output()
+        .unwrap()
+        .status
+        .success()
+    {
+        panic!()
+    }
 }
