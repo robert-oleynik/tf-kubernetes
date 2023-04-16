@@ -1,20 +1,29 @@
-# Terraform Kubernetes Provider for Rust
+# Terraform Docker Kubernetes for Rust
 
-<!-- Badges? -->
+[![crates](https://img.shields.io/crates/v/tf-kubernetes)](https://crates.io/crates/tf-kubernetes)
 
-This repository contains the pre generated rust code for the Terraform Kubernetes provider.
+This repository contains the pre generated rust code for the Terraform Kubernetes
+provider.
 
 ## Requirements
 
-<!-- Required libraries and tools -->
+- `cargo`
+- [`tf-bindgen`](https://github.com/robert-oleynik/tf-bindgen)
+- [Terraform](https://www.terraform.io)
 
 ## Usage
 
-<!-- How to use this project -->
+Use the following commands we can add `tf-bindgen` and `tf-kubernetes` to your crate:
 
-## Roadmap
+```sh
+cargo add tf-bindgen
+cargo add tf-kubernetes
+```
 
-<!-- Upcoming changes -->
+Both crates are required to use this provider. See the [Documentation] of tf-bindgen
+for more details.
+
+[Documentation]: https://github.com/robert-oleynik/tf-bindgen/deployments/activity_log?environment=github-pages
 
 ## Contributing
 
