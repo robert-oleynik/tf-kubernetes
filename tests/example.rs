@@ -1,7 +1,7 @@
 use tf_bindgen::cli::Terraform;
 use tf_bindgen::Stack;
 use tf_kubernetes::resource::kubernetes_namespace::*;
-use tf_kubernetes::resource::kubernetes_pod::*;
+use tf_kubernetes::resource::kubernetes_pod::{self, *};
 use tf_kubernetes::Kubernetes;
 
 #[test]
@@ -17,11 +17,9 @@ fn nginx() {
     let container = KubernetesPodSpecContainer::builder()
         .name("nginx")
         .image("nginx")
-        .port(vec![port])
+        .port(port)
         .build();
-    let spec = KubernetesPodSpec::builder()
-        .container(vec![container])
-        .build();
+    let spec = KubernetesPodSpec::builder().container(container).build();
 
     KubernetesPod::create(&stack, "nginx")
         .metadata(meta)
@@ -69,11 +67,9 @@ fn nginx_link() {
     let container = KubernetesPodSpecContainer::builder()
         .name("nginx")
         .image("nginx")
-        .port(vec![port])
+        .port(port)
         .build();
-    let spec = KubernetesPodSpec::builder()
-        .container(vec![container])
-        .build();
+    let spec = KubernetesPodSpec::builder().container(container).build();
 
     KubernetesPod::create(&stack, "nginx")
         .metadata(meta)
