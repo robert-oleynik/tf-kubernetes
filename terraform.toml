@@ -1,2 +1,2 @@
 [provider]
-kubernetes = "=2.18.1"
+kubernetes = "=2.19.0"
