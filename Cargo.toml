@@ -1,6 +1,6 @@
 [package]
 name = "tf-kubernetes"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 description = "Rust bindings for Terraform's Kubernetes provider. Generated with tf-bindgen."
 license = "BSD-3-Clause"
