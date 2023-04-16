@@ -2,9 +2,14 @@
 name = "tf-kubernetes"
 version = "0.1.0"
 edition = "2021"
+description = "Rust bindings for Terraform's Kubernetes provider. Generated with tf-bindgen."
+license = "BSD-3-Clause"
+repository = "https://github.com/robert-oleynik/tf-bindgen"
+keywords = ["tf-bindgen", "terraform", "infrastructure", "kubernetes", "bindings"]
+categories = ["config", "external-ffi-bindings"]
 
 [build-dependencies]
-tf-bindgen = { git = "https://github.com/robert-oleynik/tf-bindgen", version = "0.1.0" }
+tf-bindgen = "0.1.0"
 
 [dependencies]
-tf-bindgen = { git = "https://github.com/robert-oleynik/tf-bindgen", version = "0.1.0" }
+tf-bindgen = "0.1.0"

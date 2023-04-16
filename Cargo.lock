@@ -69,7 +69,7 @@ dependencies = [
  "proc-macro2",
  "quote",
  "strsim",
- "syn 1.0.109",
+ "syn",
 ]
 
 [[package]]
@@ -80,7 +80,7 @@ checksum = "a4aab4dbc9f7611d8b55048a3a16d2d010c2c8334e46304b40ac1cc14bf3b48e"
 dependencies = [
  "darling_core",
  "quote",
- "syn 1.0.109",
+ "syn",
 ]
 
 [[package]]
@@ -101,7 +101,7 @@ dependencies = [
  "darling",
  "proc-macro2",
  "quote",
- "syn 1.0.109",
+ "syn",
 ]
 
 [[package]]
@@ -111,7 +111,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ebcda35c7a396850a55ffeac740804b40ffec779b98fffbb1738f4033f0ee79e"
 dependencies = [
  "derive_builder_core",
- "syn 1.0.109",
+ "syn",
 ]
 
 [[package]]
@@ -248,7 +248,7 @@ checksum = "af487d118eecd09402d70a5d72551860e788df87b464af30e5ea6a38c75c541e"
 dependencies = [
  "proc-macro2",
  "quote",
- "syn 1.0.109",
+ "syn",
 ]
 
 [[package]]
@@ -300,19 +300,10 @@ dependencies = [
 ]
 
 [[package]]
-name = "syn"
-version = "2.0.8"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "bcc02725fd69ab9f26eab07fad303e2497fad6fb9eba4f96c4d1687bdf704ad9"
-dependencies = [
- "proc-macro2",
- "quote",
- "unicode-ident",
-]
-
-[[package]]
 name = "tf-bindgen"
 version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "fd15bc082216051cdea1949d5c077d98e4da0252d5b5b252353fdb95e6cfafeb"
 dependencies = [
  "anyhow",
  "derive_builder",
@@ -321,36 +312,53 @@ dependencies = [
  "semver",
  "serde",
  "serde_json",
- "tf-cli",
- "tf-codegen",
- "tf-core",
- "tf-schema",
+ "tf-bindgen-cli",
+ "tf-bindgen-codegen",
+ "tf-bindgen-core",
+ "tf-bindgen-schema",
  "toml",
 ]
 
 [[package]]
-name = "tf-cli"
+name = "tf-bindgen-cli"
 version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "28bee36e1995f035ab029c4a25594643557e115632f661f8d581d8f9cbe14fdd"
 dependencies = [
  "serde_json",
- "tf-core",
+ "tf-bindgen-core",
 ]
 
 [[package]]
-name = "tf-codegen"
+name = "tf-bindgen-codegen"
 version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "3395f7f44cdca2352521d08066f83455f4da9dc30b5e7b84f2a9aec20e9483cc"
 dependencies = [
+ "darling",
  "heck",
  "quote",
- "syn 2.0.8",
+ "syn",
 ]
 
 [[package]]
-name = "tf-core"
+name = "tf-bindgen-core"
 version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "a5649743bbcd6c04905e8f03473601ad746ca31c01310cfe01bd501b10f71d86"
 dependencies = [
  "sha1",
- "tf-schema",
+ "tf-bindgen-schema",
+]
+
+[[package]]
+name = "tf-bindgen-schema"
+version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "59fc4ec50e754c06f8fea7f55aa4574e17378b04c527cfde2a8a6dc748665893"
+dependencies = [
+ "serde",
+ "serde_json",
 ]
 
 [[package]]
@@ -358,14 +366,6 @@ name = "tf-kubernetes"
 version = "0.1.0"
 dependencies = [
  "tf-bindgen",
-]
-
-[[package]]
-name = "tf-schema"
-version = "0.1.0"
-dependencies = [
- "serde",
- "serde_json",
 ]
 
 [[package]]
